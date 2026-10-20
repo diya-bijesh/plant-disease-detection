@@ -1,0 +1,6 @@
+# For the training notebook (Colab already has most of these)
+tensorflow>=2.16
+scikit-learn
+pandas
+matplotlib
+gradio

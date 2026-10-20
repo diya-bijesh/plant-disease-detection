@@ -2,4 +2,3 @@ __pycache__/
 .ipynb_checkpoints/
 *.zip
 results/best_model.keras
-best_model.keras
