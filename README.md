@@ -3,7 +3,7 @@
 Deep learning system that identifies **38 plant leaf diseases** (14 crop species) from a single leaf photo. It compares a CNN built from scratch with two transfer-learning models (**MobileNetV2** and **ResNet50**), explains its predictions with **Grad-CAM** heatmaps and ships with a **Gradio** web demo.
 
 ## Dataset
-[PlantVillage](https://www.tensorflow.org/datasets/catalog/plant_village) (Hughes & Salathé, 2015): 54,303 RGB leaf images, 38 classes (26 diseases + 12 healthy) across 14 crops such as tomato, apple, potato, grape and corn. Split 80 / 10 / 10 into train / validation / test.
+[PlantVillage](https://github.com/spMohanty/PlantVillage-Dataset) (Hughes & Salathé, 2015): 54,303 RGB leaf images, 38 classes (26 diseases + 12 healthy) across 14 crops such as tomato, apple, potato, grape and corn. Split 80 / 10 / 10 into train / validation / test.
 
 ## Models
 | Model | Type | Idea |
@@ -34,7 +34,7 @@ Grad-CAM highlights the leaf regions (lesions, spots, discoloration) that drive 
 5. Outputs (plots, comparison table, classification report, model) are saved to `results/`, and a shareable Gradio demo link is printed at the end.
 
 ## Tech stack
-Python · TensorFlow / Keras · TensorFlow Datasets · scikit-learn · Matplotlib · Gradio
+Python · TensorFlow / Keras · scikit-learn · Matplotlib · Gradio
 
 ## Author
 Diya R B, B.Tech CSE (Data Science), VIT

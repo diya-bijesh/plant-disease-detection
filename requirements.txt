@@ -1,7 +1,5 @@
 tensorflow>=2.15
-tensorflow-datasets
 scikit-learn
 pandas
 matplotlib
 gradio
-importlib_resources
