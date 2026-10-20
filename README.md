@@ -3,7 +3,7 @@
 Deep learning system that identifies **38 plant leaf diseases** (14 crop species) from a single leaf photo. It compares a CNN built from scratch with two transfer-learning models (**MobileNetV2** and **ResNet50**), explains its predictions with **Grad-CAM** heatmaps and ships with a **Gradio** web demo.
 
 ## Dataset
-[PlantVillage](https://github.com/spMohanty/PlantVillage-Dataset) (Hughes & Salathé, 2015): 54,303 RGB leaf images, 38 classes (26 diseases + 12 healthy) across 14 crops such as tomato, apple, potato, grape and corn. Split 80 / 10 / 10 into train / validation / test.
+[PlantVillage](https://github.com/spMohanty/PlantVillage-Dataset) (Hughes & Salathé, 2015): 54,305 RGB leaf images, 38 classes (26 diseases + 12 healthy) across 14 crops such as tomato, apple, potato, grape and corn. Split 80 / 10 / 10 into train / validation / test.
 
 ## Models
 | Model | Type | Idea |
@@ -15,16 +15,23 @@ Deep learning system that identifies **38 plant leaf diseases** (14 crop species
 Training setup (identical for all models): 160×160 input, data augmentation (flip, rotation, zoom), Adam optimizer, sparse categorical cross-entropy, early stopping and learning-rate reduction on plateau.
 
 ## Results
-_Updated after the full training run._
+Full run on Google Colab (T4 GPU), held-out test set of 5,431 images:
 
-| Model | Test Accuracy | Params | Train Time |
-|---|---|---|---|
-| Custom CNN | – | – | – |
-| MobileNetV2 | – | – | – |
-| ResNet50 | – | – | – |
+| Model | Test Accuracy | Test Loss | Params (M) | Trainable (M) | Epochs | Train Time |
+|---|---|---|---|---|---|---|
+| Custom CNN | 91.09% | 0.301 | 0.10 | 0.10 | 9 | 49.2 min |
+| MobileNetV2 | 92.08% | 0.236 | 2.31 | 0.05 | 5 | 25.4 min |
+| **ResNet50** | **94.55%** | **0.169** | 23.67 | 0.08 | 5 | 34.7 min |
+
+Best model (ResNet50): macro F1 = 0.942, weighted F1 = 0.946. 12 of 38 classes reach F1 ≥ 0.995; tomato diseases (Target Spot, Spider mites, Early blight) are the hardest.
+
+![Training curves](results/training_curves.png)
+![Confusion matrix](results/confusion_matrix.png)
 
 ## Explainability
 Grad-CAM highlights the leaf regions (lesions, spots, discoloration) that drive each prediction.
+
+![Grad-CAM](results/gradcam.png)
 
 ## How to run
 1. Open `plant_disease_detection.ipynb` in [Google Colab](https://colab.research.google.com) (File → Upload notebook).
