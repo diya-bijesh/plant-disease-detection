@@ -33,8 +33,18 @@ Grad-CAM highlights the leaf regions (lesions, spots, discoloration) that drive 
 4. Runtime → Run all. The full run takes about 45–60 minutes.
 5. Outputs (plots, comparison table, classification report, model) are saved to `results/`, and a shareable Gradio demo link is printed at the end.
 
+## Live demo (Streamlit)
+A local web app: upload a leaf photo and it shows the predicted disease, its confidence, the top-3 predictions and a Grad-CAM heatmap.
+
+1. Install [Python 3.10–3.12](https://www.python.org/downloads/), then run `pip install streamlit tensorflow pillow matplotlib pandas`.
+2. Put `best_model.keras` (from the Colab `results.zip`) in the same folder as `app.py`.
+3. Run `streamlit run app.py`. The app opens in your browser at http://localhost:8501.
+4. Upload any image from `results/demo_images/` (unseen test leaves).
+
+The app detects which model was saved (Custom CNN, MobileNetV2 or ResNet50) and applies the matching preprocessing.
+
 ## Tech stack
-Python · TensorFlow / Keras · scikit-learn · Matplotlib · Gradio
+Python · TensorFlow / Keras · scikit-learn · Matplotlib · Gradio · Streamlit
 
 ## Author
 Diya R B, B.Tech CSE (Data Science), VIT
